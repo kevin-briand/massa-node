@@ -13,7 +13,7 @@ RUN curl -OLf https://github.com/massalabs/massa/releases/download/${massaVersio
 COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 
-RUN useradd --system --shell /usr/sbin/nologin massa && chown -R massa massa
+RUN useradd --system --uid 10001 --shell /usr/sbin/nologin massa && chown -R massa massa
 USER massa
 
 EXPOSE 31244 31245
