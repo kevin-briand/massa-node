@@ -10,6 +10,7 @@ services:
     ports:
       - "31244:31244"
       - "31245:31245"
+      - "33035:33035"
     volumes:
       - ${MASSA_CONFIG_DIR:?Définir MASSA_CONFIG_DIR}:/node/massa/massa-node/config # chemin vers le dossier de configuration du node
       - ${MASSA_STORAGE_DIR:?Définir MASSA_STORAGE_DIR}:/node/massa/massa-node/storage # chemin vers le dossier de stockage du node
