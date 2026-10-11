@@ -1,0 +1,10 @@
+# Secrets
+massa_password
+secrets/
+
+# Données du nœud (clés, wallets, blockchain)
+config/
+storage/
+
+# Variables locales
+.env

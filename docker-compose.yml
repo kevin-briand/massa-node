@@ -1,0 +1,21 @@
+services:
+  massa-node:
+    build:
+      context: ./node
+      args:
+        massaVersion: ${MASSA_VERSION:-MAIN.5.0}
+    image: massa-node:${MASSA_VERSION:-MAIN.5.0}
+    container_name: massa-node
+    restart: unless-stopped
+    ports:
+      - "31244:31244"
+      - "31245:31245"
+    volumes:
+      - ${MASSA_CONFIG_DIR:?Définir MASSA_CONFIG_DIR}:/node/massa/massa-node/config # chemin vers le dossier de configuration du node
+      - ${MASSA_STORAGE_DIR:?Définir MASSA_STORAGE_DIR}:/node/massa/massa-node/storage # chemin vers le dossier de stockage du node
+    secrets:
+      - massa_password
+
+secrets:
+  massa_password:
+    file: ${MASSA_SECRET_FILE:?Définir MASSA_SECRET_FILE}
